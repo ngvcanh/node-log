@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "es3",
+    "module": "es2020",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "outDir": "./lib",
+    "declaration": true,
+    "moduleResolution": "node"
+  },
+  "include": [
+    "./src"
+  ]
+}
