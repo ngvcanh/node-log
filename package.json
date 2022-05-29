@@ -3,6 +3,9 @@
   "description": "Log file path and method called to terminal nodejs",
   "version": "0.0.1",
   "main": "lib/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsc",
     "prepublish": "npm run build"
