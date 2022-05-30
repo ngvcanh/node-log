@@ -4,6 +4,8 @@ declare var global: typeof globalThis & {
   __log(...msg: any[]): void;
 }
 
+const log_old = console.log;
+
 /**
  * Show log file and method called this function in the terminal. Only support node environment.
  * @param ...msg any[]
@@ -69,10 +71,11 @@ function __log(...msg: any[]){
     ];
 
     msg.length && msgLog.push('👉', ...msg);
-    console.log(...msgLog);
+    log_old(...msgLog);
   }
 }
 
 global.__log = __log;
+process.env.DEBUG_LOG_REPLACE_CONSOLE && (console.log = __log);
 
 export {}

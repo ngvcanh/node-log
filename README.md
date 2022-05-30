@@ -54,3 +54,5 @@ This package always shows the log whether the environment is production or devel
 To disable this feature without removing the code make sure that `process.env.DEBUG_LOG_DISABLED` flag is a truthy.
 
 To change length of zero before `line` value. Let set `process.env.DEBUG_LOG_MIN_COLUMNS` (default: `6`). If value less than 6, it will use default value.
+
+This function with replace `console.log` if `process.env.DEBUG_LOG_REPLACE_CONSOLE` is truthy.
