@@ -12,7 +12,7 @@ const log_old = console.log;
  * @returns void
  */
 function __log(...msg: any[]){
-  if (process.env.DEBUG_LOG_DISABLED) return;
+  if (process.env.DEBUG_LOG_DISABLED && !process.env.DEBUG_LOG_REPLACE_CONSOLE) return;
   if (typeof window !== 'undefined' && typeof window.document !== undefined) return;
 
   const start = Date.now();
