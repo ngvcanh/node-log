@@ -4,9 +4,8 @@ declare var global: typeof globalThis & {
   __log(...msg: any[]): void;
 }
 
-export declare namespace NodeJS{
-  export function __log(...msg: any[]): void;
-}
+
+// export function __log(...msg: any[]): void;
 
 const log_old = console.log;
 
@@ -15,7 +14,7 @@ const log_old = console.log;
  * @param ...msg any[]
  * @returns void
  */
-function __log(...msg: any[]){
+function log(...msg: any[]){
   if (process.env.DEBUG_LOG_DISABLED && !process.env.DEBUG_LOG_REPLACE_CONSOLE) return;
   if (typeof window !== 'undefined' && typeof window.document !== undefined) return;
 
@@ -75,11 +74,13 @@ function __log(...msg: any[]){
     ];
 
     msg.length && msgLog.push('👉', ...msg);
-    log_old(...msgLog);
+    process.stdout.write(msg.join(' '))
+    // log_old(...msgLog);
   }
 }
 
-global.__log = __log;
-process.env.DEBUG_LOG_REPLACE_CONSOLE && (console.log = __log);
+global.__log = log;
+process.env.DEBUG_LOG_REPLACE_CONSOLE && (console.log = log);
 
+export declare const __log: (...msg: any[]) => void;
 export {}

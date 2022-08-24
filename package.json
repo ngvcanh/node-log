@@ -1,7 +1,7 @@
 {
   "name": "@kensoni/log",
   "description": "Log file path and method called to terminal nodejs",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "main": "lib/index.js",
   "publishConfig": {
     "access": "public"
