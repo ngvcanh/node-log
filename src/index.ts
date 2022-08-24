@@ -1,20 +1,14 @@
 import 'colors';
-
-declare var global: typeof globalThis & {
-  __log(...msg: any[]): void;
+declare global{
+  function __log(...msg: any[]): void; 
 }
-
-
-// export function __log(...msg: any[]): void;
-
-const log_old = console.log;
 
 /**
  * Show log file and method called this function in the terminal. Only support node environment.
  * @param ...msg any[]
  * @returns void
  */
-function log(...msg: any[]){
+function __log(...msg: any[]){
   if (process.env.DEBUG_LOG_DISABLED && !process.env.DEBUG_LOG_REPLACE_CONSOLE) return;
   if (typeof window !== 'undefined' && typeof window.document !== undefined) return;
 
@@ -79,8 +73,5 @@ function log(...msg: any[]){
   }
 }
 
-global.__log = log;
-process.env.DEBUG_LOG_REPLACE_CONSOLE && (console.log = log);
-
-export declare const __log: (...msg: any[]) => void;
-export {}
+global.__log = __log;
+process.env.DEBUG_LOG_REPLACE_CONSOLE && (console.log = __log);
