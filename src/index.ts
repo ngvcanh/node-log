@@ -4,6 +4,10 @@ declare var global: typeof globalThis & {
   __log(...msg: any[]): void;
 }
 
+export declare namespace NodeJS{
+  export function __log(...msg: any[]): void;
+}
+
 const log_old = console.log;
 
 /**
