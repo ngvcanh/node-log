@@ -3,6 +3,8 @@ declare global{
   function __log(...msg: any[]): void; 
 }
 
+const log_old = console.log;
+
 /**
  * Show log file and method called this function in the terminal. Only support node environment.
  * @param ...msg any[]
@@ -68,8 +70,7 @@ function __log(...msg: any[]){
     ];
 
     msg.length && msgLog.push('👉', ...msg);
-    process.stdout.write(msg.join(' '))
-    // log_old(...msgLog);
+    log_old(...msgLog);
   }
 }
 
